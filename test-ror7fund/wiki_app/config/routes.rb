@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :wiki_posts
-  namespace :wiki_posts do 
-    get 'example'
+  resources :wiki_posts do
+    collection do 
+      get 'example'
+    end
   end 
+
   namespace :welcome do 
     get 'index'
     get 'about'
