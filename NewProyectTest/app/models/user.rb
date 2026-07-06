@@ -7,6 +7,14 @@ class User < ApplicationRecord
   validate :validate_avatar_size
   validate :validate_avatar_type
 
+  def as_json(options = {})
+    {
+      id: id,
+      username: username,
+      avatar: avatar.attached? ? avatar.filename.to_s : nil
+    }
+  end
+
   def saludar
     puts "Hi my username is #{@username}"
   end

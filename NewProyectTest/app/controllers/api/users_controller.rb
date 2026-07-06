@@ -2,9 +2,7 @@ class Api::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    direction = params[:created_at] == 'desc' ? 'desc' : 'asc'
-
-    users = User.order(created_at: direction)
+    users = User.order(id: 'asc')
 
     render json: users, status: :ok
   end
