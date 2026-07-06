@@ -1,0 +1,805 @@
+{
+    "status": 400,
+    "error": "Bad Request",
+    "exception": "#\u003cActionController::ParameterMissing: param is missing or the value is empty or invalid: user\u003e",
+    "traces": {
+        "Application Trace": [
+            {
+                "exception_object_id": 96620,
+                "id": 6,
+                "trace": {},
+                "filtered_trace": "app/controllers/users_controller.rb:50:in `user_params'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 7,
+                "trace": {},
+                "filtered_trace": "app/controllers/users_controller.rb:18:in `create'"
+            }
+        ],
+        "Framework Trace": [
+            {
+                "exception_object_id": 96620,
+                "id": 0,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:826:in `block (2 levels) in fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 1,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:826:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 2,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:826:in `block in fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 3,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/hash_with_indifferent_access.rb:212:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 4,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/hash_with_indifferent_access.rb:212:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 5,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:822:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 8,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/basic_implicit_render.rb:8:in `send_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 9,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/base.rb:221:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 10,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/rendering.rb:199:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 11,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/callbacks.rb:267:in `block in process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 12,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/callbacks.rb:110:in `run_callbacks'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 13,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 14,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 15,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 16,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/notifications.rb:210:in `block in instrument'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 17,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in `instrument'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 18,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/notifications.rb:210:in `instrument'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 19,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 20,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 21,
+                "trace": {},
+                "filtered_trace": "activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 22,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/base.rb:154:in `process'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 23,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal.rb:252:in `dispatch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 24,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal.rb:335:in `dispatch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 25,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in `dispatch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 26,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in `serve'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 27,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in `block in serve'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 28,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in `block in recognize'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 29,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in `each'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 30,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in `recognize'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 31,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in `serve'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 32,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 33,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 34,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/etag.rb:29:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 35,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/conditional_get.rb:44:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 36,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/head.rb:15:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 37,
+                "trace": {},
+                "filtered_trace": "activerecord (8.1.3) lib/active_record/migration.rb:671:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 38,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 39,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/callbacks.rb:101:in `run_callbacks'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 40,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 41,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 42,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 43,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 44,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 45,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/rack/logger.rb:41:in `call_app'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 46,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/rack/logger.rb:29:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 47,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 48,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 49,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/runtime.rb:24:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 50,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 51,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 52,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 53,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 54,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 55,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 56,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/sendfile.rb:131:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 57,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 58,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/engine.rb:534:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 59,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/configuration.rb:305:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 60,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/response.rb:79:in `block in handle_request'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 61,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/thread_pool.rb:434:in `with_force_shutdown'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 62,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/response.rb:78:in `handle_request'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 63,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/server.rb:508:in `process_client'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 64,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/server.rb:263:in `block in run'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 65,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/thread_pool.rb:246:in `block in spawn_thread'"
+            }
+        ],
+        "Full Trace": [
+            {
+                "exception_object_id": 96620,
+                "id": 0,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:826:in `block (2 levels) in fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 1,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:826:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 2,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:826:in `block in fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 3,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/hash_with_indifferent_access.rb:212:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 4,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/hash_with_indifferent_access.rb:212:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 5,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/strong_parameters.rb:822:in `fetch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 6,
+                "trace": {},
+                "filtered_trace": "app/controllers/users_controller.rb:50:in `user_params'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 7,
+                "trace": {},
+                "filtered_trace": "app/controllers/users_controller.rb:18:in `create'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 8,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/basic_implicit_render.rb:8:in `send_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 9,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/base.rb:221:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 10,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/rendering.rb:199:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 11,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/callbacks.rb:267:in `block in process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 12,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/callbacks.rb:110:in `run_callbacks'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 13,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 14,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 15,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 16,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/notifications.rb:210:in `block in instrument'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 17,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in `instrument'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 18,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/notifications.rb:210:in `instrument'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 19,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 20,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 21,
+                "trace": {},
+                "filtered_trace": "activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in `process_action'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 22,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/abstract_controller/base.rb:154:in `process'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 23,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal.rb:252:in `dispatch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 24,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_controller/metal.rb:335:in `dispatch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 25,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in `dispatch'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 26,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in `serve'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 27,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in `block in serve'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 28,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in `block in recognize'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 29,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in `each'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 30,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in `recognize'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 31,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in `serve'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 32,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 33,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 34,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/etag.rb:29:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 35,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/conditional_get.rb:44:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 36,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/head.rb:15:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 37,
+                "trace": {},
+                "filtered_trace": "activerecord (8.1.3) lib/active_record/migration.rb:671:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 38,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 39,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/callbacks.rb:101:in `run_callbacks'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 40,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 41,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 42,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 43,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 44,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 45,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/rack/logger.rb:41:in `call_app'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 46,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/rack/logger.rb:29:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 47,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 48,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 49,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/runtime.rb:24:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 50,
+                "trace": {},
+                "filtered_trace": "activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 51,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 52,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 53,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 54,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 55,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 56,
+                "trace": {},
+                "filtered_trace": "rack (3.2.6) lib/rack/sendfile.rb:131:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 57,
+                "trace": {},
+                "filtered_trace": "actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 58,
+                "trace": {},
+                "filtered_trace": "railties (8.1.3) lib/rails/engine.rb:534:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 59,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/configuration.rb:305:in `call'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 60,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/response.rb:79:in `block in handle_request'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 61,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/thread_pool.rb:434:in `with_force_shutdown'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 62,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/response.rb:78:in `handle_request'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 63,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/server.rb:508:in `process_client'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 64,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/server.rb:263:in `block in run'"
+            },
+            {
+                "exception_object_id": 96620,
+                "id": 65,
+                "trace": {},
+                "filtered_trace": "puma (8.0.2) lib/puma/thread_pool.rb:246:in `block in spawn_thread'"
+            }
+        ]
+    }
+}
