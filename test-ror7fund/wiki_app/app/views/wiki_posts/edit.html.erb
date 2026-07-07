@@ -6,6 +6,23 @@
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
+  <div >
+    <%= form.label :description%><br>
+    <%= form.text_field :description %>
+  </div>
+  <div >
+    <%= form.label :author%><br>
+    <%= form.text_field :author %>
+  </div>
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+</div>
+<div >
+  <%= form.label :hidden?%><br>
+  <%= form.checkbox :hidden %>
+</div>
   <div>
     <%= form.submit "Edit" %>
   </div>

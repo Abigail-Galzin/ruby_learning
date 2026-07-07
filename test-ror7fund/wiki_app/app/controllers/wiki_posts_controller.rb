@@ -1,13 +1,29 @@
 class WikiPostsController < ApplicationController
+  include Factories
   before_action :set_wiki_post, only: %i[show edit update destroy]
 
   # GET /wiki_posts or /wiki_posts.json
   def index
-    @wiki_posts = WikiPost.all
+    if params[:keyword].present?
+      @wiki_posts = WikiPost.search(params[:keyword])
+    else
+      @wiki_posts = WikiPost.all
+    end
   end
 
   # GET /wiki_posts/1 or /wiki_posts/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.html do
+        htmmlRender = RenderingStrategies::HtmlRendering.new
+        render html: htmmlRender.render(@wiki_post).html_safe
+      end
+      format.text do
+        text = RenderingStrategies::PlainTextRendering.new
+        render html: text.render(@wiki_post)
+      end
+    end
+  end
 
   def example; end
 
@@ -21,7 +37,13 @@ class WikiPostsController < ApplicationController
 
   # POST /wiki_posts or /wiki_posts.json
   def create
-    @wiki_post = WikiPost.new(wiki_post_params)
+    is_hidden = wiki_post_params[:hidden] == '1'
+
+    @wiki_post = if is_hidden
+      WikiPostFactory.create_hidden(wiki_post_params)
+    else
+      WikiPostFactory.create_visible(wiki_post_params)
+    end
 
     respond_to do |format|
       if @wiki_post.save
@@ -66,6 +88,6 @@ class WikiPostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def wiki_post_params
-    params.fetch(:wiki_post, {}).permit(:title, :description, :author, :image)
+    params.fetch(:wiki_post, {}).permit(:title, :description, :author, :image, :hidden, :keyword)
   end
 end
