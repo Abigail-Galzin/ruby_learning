@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_07_214313) do
-  create_table "product_providers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.integer "product_id", null: false
-    t.integer "provider_id", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_providers_on_product_id"
-    t.index ["provider_id"], name: "index_product_providers_on_provider_id"
-  end
-
+ActiveRecord::Schema[8.1].define(version: 2026_07_08_201756) do
   create_table "products", force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", null: false
@@ -27,7 +18,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_214313) do
     t.decimal "price"
     t.integer "reorder_level"
     t.integer "status"
-    t.integer "stock"
+    t.integer "stock", default: 0
     t.datetime "updated_at", null: false
   end
 
@@ -43,11 +34,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_214313) do
   create_table "purchase_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "delivery_date"
+    t.integer "product_id", null: false
+    t.integer "provider_id", null: false
     t.integer "quantity"
     t.decimal "unit_price"
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purchase_orders_on_product_id"
+    t.index ["provider_id"], name: "index_purchase_orders_on_provider_id"
   end
 
-  add_foreign_key "product_providers", "products"
-  add_foreign_key "product_providers", "providers"
+  add_foreign_key "purchase_orders", "products"
+  add_foreign_key "purchase_orders", "providers"
 end
