@@ -15,7 +15,8 @@ class Api::V1::ProductsController < ApplicationController
 
   # GET /products/1
   def show
-    render json: @product
+    product = Product.find(params[:id])
+    render json: product_json(product), status: :ok
   end
 
   # POST /products

@@ -1,0 +1,41 @@
+<%= form_with(model: purchase_order, local: true) do |form| %>
+  <% if purchase_order.errors.any? %>
+    <div style="color: red;">
+      <h2><%= pluralize(purchase_order.errors.count, "error") %> impidieron guardar la orden:</h2>
+      <ul>
+        <% purchase_order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :product_id, "Producto" %><br>
+    <%= form.collection_select :product_id, @products, :id, :name, { prompt: "Seleccione un producto" } %>
+  </div>
+
+  <div>
+    <%= form.label :provider_id, "Proveedor" %><br>
+    <%= form.collection_select :provider_id, @providers, :id, :name, { prompt: "Seleccione un proveedor" } %>
+  </div>
+
+  <div>
+    <%= form.label :quantity, "Cantidad" %><br>
+    <%= form.number_field :quantity, min: 1 %>
+  </div>
+
+  <div>
+    <%= form.label :unit_price, "Precio Unitario" %><br>
+    <%= form.number_field :unit_price, step: 0.01, min: 0 %>
+  </div>
+
+  <div>
+    <%= form.label :delivery_date, "Fecha de Entrega" %><br>
+    <%= form.date_field :delivery_date %>
+  </div>
+
+  <div>
+    <%= form.submit "Crear Orden de Compra" %>
+  </div>
+<% end %>

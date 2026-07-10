@@ -1,6 +1,6 @@
 class PurchaseOrdersController < ApplicationController
   before_action :set_options, :set_purchase_order, only: %i[ new show update destroy edit]
-  skip_before_action :verify_authenticity_token
+  before_action :authenticate_request!
 
   def new
     @purchase_order = PurchaseOrder.new # Inicializa el objeto vacío para el formulario

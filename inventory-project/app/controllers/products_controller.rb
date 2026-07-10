@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
+    @products = Product.filtered(params)
 
     render json: @products
   end
@@ -50,14 +50,20 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     quantity = params[:quantity].to_i
 
+    if quantity <= 0
+      return render json: { errors: { quantity: ["must be greater than 0"] } }, 
+        status: :unprocessable_entity
+    end
+
     if @product.sell_product(quantity)
+      render json: {
+        message: "Sale completed successfully",
+        product: product_json(product)
+      }, status: :ok
+      Rails.logger.info "Product ##{id} (#{name}) sold #{quantity} units. New stock: #{stock}"
       redirect_to @product, notice: "#{quantity} product(s) sold"
     else
-      render json: @product.errors, status: :unprocessable_content 
-      #respond_to do |format|
-       # format.html { render :edit, status: :unprocessable_content }
-        #format.json { render json: @product.errors, status: :unprocessable_content }
-      #end
+      render json: @product.errors, status: :unprocessable_content
     end
   end
 

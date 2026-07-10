@@ -6,11 +6,27 @@ class Product < ApplicationRecord
 
   CATEGORIES = %w[electronics clothing food books premium furniture].freeze
 
-  validates :name, :price, presence: true
+  validates :name, :price, :stock, presence: true
   validates :price, numericality: { greater_than: 0}
   validates :category, presence: true, inclusion: { in: CATEGORIES }
 
   before_save :check_reorder_level
+
+   # Scopes
+   scope :by_category, ->(category) { where(category: category) if category.present? }
+   scope :min_price, ->(price) { where('price >= ?', price) if price.present? }
+   scope :max_price, ->(price) { where('price <= ?', price) if price.present? }
+   scope :in_stock, ->(value) { where('stock > 0') if value == 'true' }
+   scope :active_only, -> { where(active: true) }
+   scope :low_stock, -> { where('stock <= reorder_level') }
+
+   scope :filtered, ->(params) {
+    by_category(params[:category])
+      .min_price(params[:min_price])
+      .max_price(params[:max_price])
+      .in_stock(params[:in_stock])
+      .active_only if params[:active_only] == 'true'
+  }
 
   def check_reorder_level
     return unless stock.present? && reorder_level.present?
