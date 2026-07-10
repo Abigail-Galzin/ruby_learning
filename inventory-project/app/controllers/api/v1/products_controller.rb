@@ -1,5 +1,5 @@
-class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show update destroy edit sell ]
+class Api::V1::ProductsController < ApplicationController
+  before_action :set_product, only: %i[ show update destroy sell ]
   skip_before_action :verify_authenticity_token
 
   def new
@@ -51,13 +51,9 @@ class ProductsController < ApplicationController
     quantity = params[:quantity].to_i
 
     if @product.sell_product(quantity)
-      redirect_to @product, notice: "#{quantity} product(s) sold"
+      render json: @product, status: :ok, notice: "#{quantity} product(s) sold"
     else
-      render json: @product.errors, status: :unprocessable_content 
-      #respond_to do |format|
-       # format.html { render :edit, status: :unprocessable_content }
-        #format.json { render json: @product.errors, status: :unprocessable_content }
-      #end
+      render json: @product.errors, status: :unprocessable_content
     end
   end
 
@@ -65,6 +61,8 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params.expect(:id))
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "Producto no encontrado" }, status: :not_found
     end
 
     # Only allow a list of trusted parameters through.
@@ -72,3 +70,4 @@ class ProductsController < ApplicationController
       params.expect(product: [ :name, :price, :stock, :category ])
     end
 end
+

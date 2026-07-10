@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 
   enum :status, { active: 0, discontinued: 1, low_stock: 2 }
 
-  CATEGORIES = %w[electronics clothing food books premium].freeze
+  CATEGORIES = %w[electronics clothing food books premium furniture].freeze
 
   validates :name, :price, presence: true
   validates :price, numericality: { greater_than: 0}
@@ -12,19 +12,45 @@ class Product < ApplicationRecord
 
   before_save :check_reorder_level
 
-  def validate_stock
-    if stock > 0
-      stock -= 1
-    end
-  end
-
   def check_reorder_level
+    return unless stock.present? && reorder_level.present?
+
     if stock <= reorder_level
-      low_stock!
+      self.status = :low_stock
     end
   end
 
   def self.premium_category
     "premium"
+  end
+
+  def sell_product(quantity)
+    puts quantity
+    puts discontinued?
+    if discontinued?
+      errors.add(:base, "Discontinued product")
+      return false
+    end
+
+    if available_quantity(quantity)
+      self.stock -= quantity
+
+      if save
+        check_reorder_level
+        true
+      else
+        false
+      end
+    end
+  end
+
+  def available_quantity(quantity)
+    puts quantity > stock
+    if quantity > stock
+      errors.add(:stock, "Not enough stock")
+      return false
+    else
+      return true
+    end
   end
 end

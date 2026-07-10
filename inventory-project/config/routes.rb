@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :purchase_orders
+  resources :providers
+  resources :products do
+    member do
+      post :sell
+    end
+    collection do
+      get :low_stock
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,4 +17,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :purchase_orders
+      resources :products
+      resources :providers
+    end
+  end
 end
