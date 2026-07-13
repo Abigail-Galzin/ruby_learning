@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
     quantity = params[:quantity].to_i
 
     if quantity <= 0
-      return render json: { errors: { quantity: ["must be greater than 0"] } }, 
+      return render json: { errors: { quantity: ["must be greater than 0"] } },
         status: :unprocessable_entity
     end
 
