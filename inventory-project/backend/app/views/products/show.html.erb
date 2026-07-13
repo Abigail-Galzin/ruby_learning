@@ -1,12 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @product %>
-
+<h1><%= @product.name %></h1>
+<p><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
+<p><strong>Stock:</strong> <%= @product.stock %></p>
+<p><strong>Category:</strong> <%= @product.category %></p>
 
 <div>
   <%= link_to "Edit this product", edit_product_path(@product) %> |
   <%= link_to "Back to products", products_path %>
-
   <%= button_to "Destroy this product", @product, method: :delete %>
   <%= button_to "Sell this product", @product, method: :sell %>
 </div>

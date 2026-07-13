@@ -1,18 +1,23 @@
 class ProvidersController < ApplicationController
-  before_action :set_provider, only: %i[ show update destroy ]
+  before_action :set_provider, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
-  skip_before_action :verify_authenticity_token # ToDo
+
+  # GET /providers/new
+  def new
+    @provider = Provider.new
+  end
 
   # GET /providers
   def index
     @providers = Provider.all
-
-    render json: @providers
   end
 
   # GET /providers/1
   def show
-    render json: @provider
+  end
+
+  # GET /providers/1/edit
+  def edit
   end
 
   # POST /providers
@@ -20,34 +25,34 @@ class ProvidersController < ApplicationController
     @provider = Provider.new(provider_params)
 
     if @provider.save
-      render json: @provider, status: :created, location: @provider
+      redirect_to @provider, notice: "Provider successfully created."
     else
-      render json: @provider.errors, status: :unprocessable_content
+      render :new, status: :unprocessable_content
     end
   end
 
   # PATCH/PUT /providers/1
   def update
     if @provider.update(provider_params)
-      render json: @provider
+      redirect_to @provider, notice: "Provider successfully updated."
     else
-      render json: @provider.errors, status: :unprocessable_content
+      render :edit, status: :unprocessable_content
     end
   end
 
   # DELETE /providers/1
   def destroy
     @provider.destroy!
+    redirect_to providers_url, notice: "Provider successfully deleted.", status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_provider
-      @provider = Provider.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def provider_params
-      params.fetch(:provider, {})
-    end
+  def set_provider
+    @provider = Provider.find(params[:id])
+  end
+
+  def provider_params
+    params.fetch(:provider, {}).permit(:name, :email, :phone, :address)
+  end
 end

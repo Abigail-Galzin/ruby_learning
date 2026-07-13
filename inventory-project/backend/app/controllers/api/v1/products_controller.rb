@@ -2,38 +2,30 @@ class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: %i[ show update destroy sell ]
   skip_before_action :verify_authenticity_token
 
-  def new
-    @product = Product.new # Inicializa el objeto vacío para el formulario
-  end
-
-  # GET /products
+  # GET /api/v1/products
   def index
     @products = Product.all
-
-    render json: @products
+    render json: @products, status: :ok
   end
 
-  # GET /products/1
+  # GET /api/v1/products/1
   def show
-    product = Product.find(params[:id])
-    render json: product_json(product), status: :ok
+    render json: @product, status: :ok
   end
 
-  # POST /products
+  # POST /api/v1/products
   def create
     @product = Product.new(product_params)
 
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: @product, status: :created, location: api_v1_product_url(@product)
     else
       render json: @product.errors, status: :unprocessable_content
     end
   end
 
-  # PATCH/PUT /products/1
+  # PATCH/PUT /api/v1/products/1
   def update
-    @product = Product.find(params[:id])
-
     if @product.update(product_params)
       render json: @product, status: :ok
     else
@@ -41,34 +33,37 @@ class Api::V1::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
+  # DELETE /api/v1/products/1
   def destroy
     @product.destroy!
-    #redirect_to products_url, notice: "Producto eliminado con éxito.", status: :see_other
+    head :no_content
   end
 
+  # PATCH /api/v1/products/1/sell
   def sell
-    @product = Product.find(params[:id])
     quantity = params[:quantity].to_i
 
+    if quantity <= 0
+      return render json: { errors: { quantity: ["must be greater than 0"] } },
+        status: :unprocessable_content
+    end
+
     if @product.sell_product(quantity)
-      render json: @product, status: :ok, notice: "#{quantity} product(s) sold"
+      render json: { message: "#{quantity} product(s) sold", product: @product }, status: :ok
     else
       render json: @product.errors, status: :unprocessable_content
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params.expect(:id))
-    rescue ActiveRecord::RecordNotFound
-      render json: { error: "Producto no encontrado" }, status: :not_found
-    end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.expect(product: [ :name, :price, :stock, :category ])
-    end
+  def set_product
+    @product = Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Product not found (no encontrado)" }, status: :not_found
+  end
+
+  def product_params
+    params.expect(product: [ :name, :price, :stock, :category ])
+  end
 end
-

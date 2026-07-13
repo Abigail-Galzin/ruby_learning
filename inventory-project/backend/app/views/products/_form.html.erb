@@ -13,16 +13,16 @@
 
   <div>
     <%= form.label :name, "Name" %>
-    <%= form.text_field :name, step: :any %>
+    <%= form.text_field :name%>
   </div>
 
   <div>
     <%= form.label :price, "Price" %>
-    <%= form.number_field :price, step: :any %>
+    <%= form.number_field :price, step: 0.01 %>
   </div>
 
   <div>
-    <%= form.label :stock, "Stock" %>
+    <%= form.label :stock %>
     <%= form.number_field :stock %>
   </div>
 
