@@ -1,6 +1,6 @@
 import apiClient from './client';
 
-export const productsApi = {
+export const purchaseOrderApi = {
   getAll: () => apiClient.get('/purchase_orders'),
   getOne: (id) => apiClient.get(`/purchase_orders/${id}`),
   create: (data) => apiClient.post('/purchase_orders', data),

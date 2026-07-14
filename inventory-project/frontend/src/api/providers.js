@@ -1,6 +1,6 @@
 import apiClient from './client';
 
-export const productsApi = {
+export const providerApi = {
   getAll: () => apiClient.get('/providers'),
   getOne: (id) => apiClient.get(`/providers/${id}`),
   create: (data) => apiClient.post('/providers', data),
