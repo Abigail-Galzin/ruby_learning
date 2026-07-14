@@ -6,12 +6,12 @@ class Api::V1::PurchaseOrdersController < ApplicationController
   # GET /api/v1/purchase_orders
   def index
     @purchase_orders = PurchaseOrder.includes(:product, :provider).all
-    render json: @purchase_orders, status: :ok
+    render json: @purchase_orders.map { |purchase_order| PurchaseOrderSerializer.new(purchase_order).serializable_hash }, status: :ok
   end
 
   # GET /api/v1/purchase_orders/1
   def show
-    render json: @purchase_order, status: :ok
+    render json: PurchaseOrderSerializer.new(@purchase_order).serializable_hash, status: :ok
   end
 
   # POST /api/v1/purchase_orders
@@ -19,7 +19,7 @@ class Api::V1::PurchaseOrdersController < ApplicationController
     @purchase_order = PurchaseOrder.new(purchase_order_params)
 
     if @purchase_order.save
-      render json: @purchase_order, status: :created
+      render json: PurchaseOrderSerializer.new(@purchase_order).serializable_hash, status: :created
     else
       render json: @purchase_order.errors, status: :unprocessable_content
     end
@@ -28,7 +28,7 @@ class Api::V1::PurchaseOrdersController < ApplicationController
   # PATCH/PUT /api/v1/purchase_orders/1
   def update
     if @purchase_order.update(purchase_order_params)
-      render json: @purchase_order, status: :ok
+      render json: PurchaseOrderSerializer.new(@purchase_order).serializable_hash, status: :ok
     else
       render json: @purchase_order.errors, status: :unprocessable_content
     end

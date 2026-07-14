@@ -4,13 +4,13 @@ class Api::V1::ProductsController < ApplicationController
 
   # GET /api/v1/products
   def index
-    @products = Product.all
-    render json: @products, status: :ok
+    @products = Product.includes(:purchase_orders, :providers)
+    render json: @products.map { |product| ProductSerializer.new(product).serializable_hash }, status: :ok
   end
 
   # GET /api/v1/products/1
   def show
-    render json: @product, status: :ok
+    render json: ProductSerializer.new(@product).serializable_hash, status: :ok
   end
 
   # POST /api/v1/products
@@ -18,7 +18,7 @@ class Api::V1::ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      render json: @product, status: :created, location: api_v1_product_url(@product)
+      render json: ProductSerializer.new(@product).serializable_hash, status: :created, location: api_v1_product_url(@product)
     else
       render json: @product.errors, status: :unprocessable_content
     end
@@ -27,7 +27,7 @@ class Api::V1::ProductsController < ApplicationController
   # PATCH/PUT /api/v1/products/1
   def update
     if @product.update(product_params)
-      render json: @product, status: :ok
+      render json: ProductSerializer.new(@product).serializable_hash, status: :ok
     else
       render json: @product.errors, status: :unprocessable_content
     end
@@ -37,6 +37,11 @@ class Api::V1::ProductsController < ApplicationController
   def destroy
     @product.destroy!
     head :no_content
+  end
+
+  # GET /api/v1/products/categories
+  def categories
+    render json: Product::CATEGORIES.map { |category| { value: category, label: category.humanize } }, status: :ok
   end
 
   # PATCH /api/v1/products/1/sell
@@ -49,7 +54,7 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     if @product.sell_product(quantity)
-      render json: { message: "#{quantity} product(s) sold", product: @product }, status: :ok
+      render json: { message: "#{quantity} product(s) sold", product: ProductSerializer.new(@product).serializable_hash }, status: :ok
     else
       render json: @product.errors, status: :unprocessable_content
     end

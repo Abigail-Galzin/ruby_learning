@@ -4,13 +4,13 @@ class Api::V1::ProvidersController < ApplicationController
 
   # GET /api/v1/providers
   def index
-    @providers = Provider.all
-    render json: @providers, status: :ok
+    @providers = Provider.includes(:purchase_orders, :products)
+    render json: @providers.map { |provider| ProviderSerializer.new(provider).serializable_hash }, status: :ok
   end
 
   # GET /api/v1/providers/1
   def show
-    render json: @provider, status: :ok
+    render json: ProviderSerializer.new(@provider).serializable_hash, status: :ok
   end
 
   # POST /api/v1/providers
@@ -18,7 +18,7 @@ class Api::V1::ProvidersController < ApplicationController
     @provider = Provider.new(provider_params)
 
     if @provider.save
-      render json: @provider, status: :created, location: api_v1_provider_url(@provider)
+      render json: ProviderSerializer.new(@provider).serializable_hash, status: :created, location: api_v1_provider_url(@provider)
     else
       render json: @provider.errors, status: :unprocessable_content
     end
@@ -27,7 +27,7 @@ class Api::V1::ProvidersController < ApplicationController
   # PATCH/PUT /api/v1/providers/1
   def update
     if @provider.update(provider_params)
-      render json: @provider, status: :ok
+      render json: ProviderSerializer.new(@provider).serializable_hash, status: :ok
     else
       render json: @provider.errors, status: :unprocessable_content
     end
@@ -48,6 +48,6 @@ class Api::V1::ProvidersController < ApplicationController
   end
 
   def provider_params
-    params.fetch(:provider, {}).permit(:name, :email, :phone, :address)
+    params.fetch(:provider, {}).permit(:name, :email, :phone, :address, :rating)
   end
 end

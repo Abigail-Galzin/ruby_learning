@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :purchase_orders
-      resources :products
+      resources :products do
+        collection do
+          get :categories
+        end
+      end
       resources :providers
     end
   end
