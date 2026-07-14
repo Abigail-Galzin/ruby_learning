@@ -65,15 +65,23 @@ export default function ProductList() {
             color: "common.white",
           }}
         >
-          <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" spacing={2} alignItems={{ sm: "center" }}>
-            <Box>
+          <Stack spacing={3} alignItems="center">
+            <Box sx={{textAlign : "center"}}>
               <Typography variant="overline" sx={{ letterSpacing: 2, color: "rgba(255,255,255,0.65)" }}>Inventory</Typography>
               <Typography variant="h4" fontWeight={800}>Products</Typography>
               <Typography sx={{ color: "rgba(255,255,255,0.75)", mt: 0.5 }}>
                 Track catalog items, prices, stock, and categories from a responsive workspace.
               </Typography>
             </Box>
-            <Button component={Link} to="/products/new" variant="contained" size="large">
+            <Button
+              component={Link}
+              to="/products/new"
+              variant="contained"
+              sx={{
+                width: { xs: "100%", sm: "auto" },
+                minWidth: { sm: 200 }
+              }}
+            >
               New product
             </Button>
           </Stack>
@@ -128,7 +136,7 @@ export default function ProductList() {
                   </TableCell>
                   <TableCell>{product.category || "Uncategorized"}</TableCell>
                   <TableCell align="right">
-                    <Stack direction="row" spacing={1} justifyContent="flex-end">
+                    <div>
                       <Button component={Link} to={`/products/${product.id}`} size="small" variant="text">
                         View
                       </Button>
@@ -138,7 +146,7 @@ export default function ProductList() {
                       <Button onClick={() => handleDelete(product.id)} size="small" variant="text" color="error">
                         Delete
                       </Button>
-                    </Stack>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

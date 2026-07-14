@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Container,
+  Chip,
   Paper,
   Stack,
   Table,
@@ -37,12 +38,12 @@ export default function ProviderList() {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Stack spacing={3}>
-      <Paper sx={{ p: { xs: 3, md: 4 }, borderRadius: 4, background: "linear-gradient(135deg, #0f172a, #1e293b)", color: "common.white" }}>
-        <Stack spacing={3} alignItems="center">
-          <Box textAlign="center">
-            <Typography variant="overline" sx={{ color: "rgba(255,255,255,0.65)" }}>Procurement</Typography>
+      <Paper sx={{ p: { xs: 3, md: 4 }, borderRadius: 4, background: "linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,41,59,0.92))", color: "common.white" }}>
+        <Stack spacing={3} sx={{alignItems: "center"}}>
+          <Box sx={{textAlign: "center"}}>
+            <Typography variant="overline" sx={{ letterSpacing: 2, color: "rgba(255,255,255,0.65)" }}>Procurement</Typography>
             <Typography variant="h4" fontWeight={800}>Purchase Orders</Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.75)" }}>
+            <Typography sx={{ color: "rgba(255,255,255,0.75)" , mt: 0.5 }}>
               Connect products and providers in one workflow.
             </Typography>
           </Box>
@@ -66,6 +67,7 @@ export default function ProviderList() {
               <TableRow sx={{ bgcolor: "grey.50" }}>
                 <TableCell sx={{ fontWeight: 700 }}>Name</TableCell>
                 <TableCell sx={{ fontWeight: 700 }}>Email</TableCell>
+                <TableCell sx={{ fontWeight: 700 }}>Rating</TableCell>
                 <TableCell sx={{ fontWeight: 700 }}>Phone</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 700 }}>Actions</TableCell>
               </TableRow>
@@ -73,7 +75,7 @@ export default function ProviderList() {
             <TableBody>
               {providers.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={4}>
+                  <TableCell colSpan={5}>
                     <Box sx={{ py: 8, textAlign: "center" }}>
                       <Typography variant="h6" fontWeight={700}>No providers yet</Typography>
                       <Typography color="text.secondary" sx={{ mb: 2 }}>Add your first provider to start building purchase orders.</Typography>
@@ -85,13 +87,16 @@ export default function ProviderList() {
                 <TableRow key={provider.id} hover>
                   <TableCell sx={{ fontWeight: 700 }}>{provider.name}</TableCell>
                   <TableCell>{provider.email}</TableCell>
+                  <TableCell>
+                    <Chip label={provider.rating ?? "—"} size="small" color={Number(provider.rating) >= 4 ? "success" : "default"} variant="outlined" />
+                  </TableCell>
                   <TableCell>{provider.phone || "—"}</TableCell>
                   <TableCell align="right">
-                    <Stack direction="row" spacing={1} justifyContent="flex-end">
+                    <div display="flex">
                       <Button component={Link} to={`/providers/${provider.id}`} size="small" variant="text">View</Button>
                       <Button component={Link} to={`/providers/${provider.id}/edit`} size="small" variant="text">Edit</Button>
                       <Button onClick={() => handleDelete(provider.id)} size="small" variant="text" color="error">Delete</Button>
-                    </Stack>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}
